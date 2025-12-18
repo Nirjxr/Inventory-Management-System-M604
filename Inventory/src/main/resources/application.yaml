@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Inventory
+  datasource:
+    url: jdbc:mysql://localhost:3306/inventory_db
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  data:
+    mongodb:
+#      uri: mongodb+srv://mihir:mihir%401234@cluster0.3nlyrek.mongodb.net/inventory_logs?retryWrites=true&w=majority
+      uri: mongodb+srv://Nikk:Nikk%40123@cluster0.pxvstm1.mongodb.net/inventory_logs?retryWrites=true&w=majority

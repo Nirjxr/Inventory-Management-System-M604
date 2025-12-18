@@ -1,0 +1,32 @@
+package com.Inventory.Inventory.purchaseOrder;
+
+import com.Inventory.Inventory.supplier.Supplier;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
+
+@Entity
+@Table(name = "tbl_purchase_orders")
+@Getter
+@Setter
+public class PurchaseOrder {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
+    private Supplier supplier;
+    private LocalDate orderDate = LocalDate.now();
+    private String status;
+    private BigDecimal totalAmount;
+    @OneToMany(mappedBy = "purchaseOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<PurchaseOrderItem> items;
+
+}
+
